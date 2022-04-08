@@ -18,7 +18,7 @@ SOURCES_R2=$(addprefix $(SRC_DIR)/, \
 SOURCES_DEF = $(addprefix $(SRC_DIR)/, \
 	stt_solver.cpp LSODA.cpp asa047.cpp)
 
-### Objects (in obj directory)
+### Objects (in build directory)
 OBJECTS_R2=$(SOURCES_R2:$(SRC_DIR)%.cpp=$(OBJ_DIR)%.o)
 OBJECTS_DEF=$(SOURCES_DEF:$(SRC_DIR)%.cpp=$(OBJ_DIR)%.o)
 
