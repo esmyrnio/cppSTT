@@ -16,5 +16,5 @@ DEF.exe and R2.exe take 4 inputs in-turn:
 2. The coupling constant (e.g. -4.5 for DEF and 100.0 for R^2).
 3. The central energy density in CGS/10^15 (e.g 1.2).
 4. The print option 0 or 1:
-    -  0: Prints minimization info along with number of grid points N, central energy density e_c, gravitational mass M, radius R and scalar charge.
+    -  0: Prints minimization info along with gravitational mass M, radius R and scalar charge.
     -  1: Prints (0) along with the distance, metric, scalar, energy density and pressure profiles.
