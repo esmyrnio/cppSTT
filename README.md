@@ -2,7 +2,7 @@
 
 ## Description
 
-Constructing neutron star models in the context of Damour-Esposito-Farese (DEF) scalar-tensor model and R^2 - gravity model. The system of ODEs is solved by implementing the c++11 version of LSODA (https://github.com/dilawar/libsoda-cxx). Additionally, a c++ version of Nelder-Mead method (https://people.sc.fsu.edu/~jburkardt/cpp_src/asa047/asa047.html) is used for the optimization of the initial conditions. 
+Constructing neutron star models in the context of Damour-Esposito-Farese (DEF) scalar-tensor model and R^2 - gravity model. The system of ODEs is solved by implementing a C++11 version of LSODA (https://github.com/dilawar/libsoda-cxx). Additionally, a C++ version of Nelder-Mead method (https://people.sc.fsu.edu/~jburkardt/cpp_src/asa047/asa047.html) is used for the optimization of the initial conditions. 
 
 ## Usage
 
