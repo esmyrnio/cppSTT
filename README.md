@@ -14,7 +14,7 @@ DEF.exe and R2.exe take 4 inputs in-turn. The parameters are specified using the
 2. **-c** *coupling* (The EGB coupling constant in km^2).
 3. **-e** *central_density* (The central energy density in CGS/10^15).
 4. **-p** *print_option*:
-    -  0: Prints gravitational mass M and radius R.
+    -  0: Prints minimization information along with the gravitational mass M and radius R.
     -  1: Prints (0) along with the distance, metric, scalar, energy density and pressure profiles.
 
 For example,
