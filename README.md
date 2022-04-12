@@ -19,6 +19,6 @@ DEF.exe and R2.exe take 4 inputs in-turn. The parameters are specified using the
 
 For example,
 
-*./DEF -f eosSLY.txt -c -5.0 -e 1.5 -o 0*
+*./DEF -f eosSLY.txt -c -5.0 -e 1.5 -p 0*
 
-*./R2 -f eosSLY.txt -c 10.0 -e 1.5 -o 0*
+*./R2 -f eosSLY.txt -c 10.0 -e 1.5 -p 0*
