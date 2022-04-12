@@ -613,17 +613,29 @@ void find_min(double (&min_vals)[2])
 /**************************************************************************************************************************************/
 /**************************************************************************************************************************************/
 
-int main(int argc, char const *argv[])
+int main(int argc, char *argv[])
 {
 
-  scanf("%s",eos_name);
+  for(int i=1;i<argc;i++) 
+      if(argv[i][0]=='-'){
+        switch(argv[i][1]){
+          
+          case 'f':
+              sscanf(argv[i+1],"%s",eos_name);
+              break;
+          case 'c':
+              sscanf(argv[i+1],"%lf",&coupling);
+              break;
+          case 'e':
+              sscanf(argv[i+1],"%lf",&central_density);
+              break;
+          case 'p':
+              sscanf(argv[i+1],"%i",&print_option);
+              break;
+          }
+      }
 
   load_eos(eos_name);
-  scanf("%lf",&coupling);  
-  scanf("%lf",&central_density);
-
-  std::cin>>print_option;
-
 
   double min_val[2];
 
