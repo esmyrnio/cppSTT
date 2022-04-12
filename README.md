@@ -8,13 +8,17 @@ Constructing neutron star models in the context of Damour-Esposito-Farese (DEF) 
 
 Compile, using the provided makefile. Simply type "make" in the main directory, where the makefile is also located.
 
-run ./DEF or ./R2
+DEF.exe and R2.exe take 4 inputs in-turn. The parameters are specified using the following flags:
 
-DEF.exe and R2.exe take 4 inputs in-turn:
-
-1. The EoS file name (e.g. eosSLY.txt).
-2. The coupling constant (e.g. -5.0 for DEF and 100.0 for R^2).
-3. The central energy density in CGS/10^15 (e.g 1.2).
-4. The print option 0 or 1:
-    -  0: Prints minimization info along with gravitational mass M, radius R and scalar charge.
+1. **-f** *eos_name* (The EoS file name).
+2. **-c** *coupling* (The EGB coupling constant in km^2).
+3. **-e** *central_density* (The central energy density in CGS/10^15).
+4. **-p** *The print option 0 or 1*:
+    -  0: Prints gravitational mass M and radius R.
     -  1: Prints (0) along with the distance, metric, scalar, energy density and pressure profiles.
+
+For example,
+
+*./DEF -f eosSLY.txt -c -5.0 -e 1.5 -o 0*
+
+*./R2 -f eosSLY.txt -c 10.0 -e 1.5 -o 0*
