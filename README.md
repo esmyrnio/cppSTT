@@ -6,7 +6,7 @@ Constructing neutron star models in the context of Damour-Esposito-Farese (DEF) 
 
 ## Usage
 
-Compile, using the provided makefile. Simply type "make" in the main directory, where the makefile is also located.
+Compile, using the provided makefile. Simply type "make" in the main directory, where the makefile is also located, to create the executionables.
 
 DEF.exe and R2.exe take 4 inputs in-turn. The parameters are specified using the following flags:
 
