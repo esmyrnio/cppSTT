@@ -11,7 +11,7 @@ Compile, using the provided makefile. Simply type "make" in the main directory, 
 DEF.exe and R2.exe take 4 inputs in-turn. The parameters are specified using the following flags:
 
 1. **-f** *eos_name* (The EoS file name).
-2. **-c** *coupling* (The EGB coupling constant in km^2).
+2. **-c** *coupling* (The DEF or R^2 coupling constant).
 3. **-e** *central_density* (The central energy density in CGS/10^15).
 4. **-p** *print_option*:
     -  0: Prints minimization information along with the gravitational mass M and radius R.
