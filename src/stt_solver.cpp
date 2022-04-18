@@ -9,7 +9,7 @@
 
 #include "../include/LSODA.h"
 
-#include "../include/asa047.h"
+#include "../include/asa047.hpp"
 
 #define G 6.6732e-8
 #define C 2.9979e+10
