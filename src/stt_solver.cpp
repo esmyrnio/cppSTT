@@ -56,7 +56,7 @@ void load_eos( char eos_file[])
 
     /* OPEN FILE TO READ */
     char eos[100];
-    strcat(eos,"EoS/");  /* add path */
+    strcpy(eos,"EoS/");  /* add path */
     strcat(eos,eos_file);
 	
     if((f_eos=fopen(eos,"r")) == NULL ) {    
