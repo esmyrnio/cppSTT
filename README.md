@@ -2,7 +2,7 @@
 
 ## Description
 
-Program for obtaining neutron star models in the context of Damour-Esposito-Farese (DEF) scalar tensor theory model and R^2 gravity model. The system of ODEs is solved by implementing a C++11 version of LSODA[^1]. Additionally, a C++ version of Nelder-Mead method[^2] is used for the optimization of the initial conditions as well as some modules from the BOOST C++ library[^3]. The code prints the model's parameters e.g. mass, radius, scalar charge, scalar at center and boundary minimization accuracy, for the corresponding input parameters.
+Program for obtaining neutron star models for tabulated equations of state, in the context of Damour-Esposito-Farese (DEF) scalar tensor theory model and R^2 gravity model. The system of ODEs is solved by implementing a C++11 version of LSODA[^1]. Additionally, a C++ version of Nelder-Mead method[^2] is used for the optimization of the initial conditions as well as some modules from the BOOST C++ library[^3]. The code prints the model's parameters e.g. mass, radius, scalar charge, scalar at center and boundary minimization accuracy, for the corresponding input parameters.
 
 The C++ code is wrapped using SWIG[^4], into a python library which can be imported and used in any way, as shown in swig/test.py.
 
