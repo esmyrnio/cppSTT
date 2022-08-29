@@ -1,8 +1,8 @@
-# STT_solvers
+# cppSTT
 
 ## Description
 
-Program for obtaining neutron star models in the context of Damour-Esposito-Farese (DEF) scalar-tensor theory model and R^2 - gravity model. The system of ODEs is solved by implementing a C++11 version of LSODA^[1]. Additionally, a C++ version of Nelder-Mead method ^[2] is used for the optimization of the initial conditions as well as some modules from the BOOST C++ library ^[3]. 
+Program for obtaining neutron star models in the context of Damour-Esposito-Farese (DEF) scalar tensor theory model and R^2 gravity model. The system of ODEs is solved by implementing a C++11 version of LSODA^[1]. Additionally, a C++ version of Nelder-Mead method ^[2] is used for the optimization of the initial conditions as well as some modules from the BOOST C++ library ^[3]. The code prints the model's parameters e.g. mass, radius, scalar charge, scalar at center and boundary minimization accuracy, for the corresponding input parameters.
 
 The C++ code is wrapped using SWIG[^4], into a python library which can be imported and used in any way, as shown in swig/test.py.
 
@@ -25,8 +25,10 @@ For example,
 ```
 ./STT -m R2 -f ppsly4.cold.rns1.1.txt -c 20.0 -e 1.5 -p 0
 ```
+*typical input parameter space:*
+   - *central density ~ 0.5-4.0 (10^15 gr/cm^3)*
+   - *coupling ~ [-5.0,-4.5] (DEF), [5,10^3] (R^2)*
 
-The code prints the model's parameters e.g. mass, radius, scalar charge, scalar at center and boundary minimization accuracy, for the corresponding input parameters.
 
 [^1]:https://github.com/dilawar/libsoda-cxx
 [^2]:https://people.sc.fsu.edu/~jburkardt/cpp_src/asa047/asa047.html
