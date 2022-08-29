@@ -2,9 +2,9 @@
 
 ## Description
 
-Program for obtaining neutron star models for tabulated equations of state, in the context of Damour-Esposito-Farese (DEF) scalar tensor theory model and R^2 gravity model. The system of ODEs is solved by implementing a C++11 version of LSODA[^1]. Additionally, a C++ version of Nelder-Mead method[^2] is used for the optimization of the initial conditions as well as some modules from the BOOST C++ library[^3]. The code prints the model's parameters e.g. mass, radius, scalar charge, scalar at center and boundary minimization accuracy, for the corresponding input parameters.
+Program for obtaining neutron star models for tabulated equations of state[^1], in the context of Damour-Esposito-Farese (DEF) scalar tensor theory model and R^2 gravity model. The system of ODEs is solved by implementing a C++11 version of LSODA[^2]. Additionally, a C++ version of Nelder-Mead method[^3] is used for the optimization of the initial conditions as well as some modules from the BOOST C++ library[^4]. The code prints the model's parameters e.g. mass, radius, scalar charge, scalar at center and boundary minimization accuracy, for the corresponding input parameters.
 
-The C++ code is wrapped using SWIG[^4], into a python library which can be imported and used in any way, as shown in swig/test.py.
+The C++ code is wrapped using SWIG[^5], into a python library which can be imported and used in any way, as shown in swig/test.py.
 
 ## Usage
 
@@ -31,7 +31,8 @@ For example,
 
 GR solutions may also be obtained simply by choosing "DEF" as theory and setting the coupling to zero.
 
-[^1]:https://github.com/dilawar/libsoda-cxx
-[^2]:https://people.sc.fsu.edu/~jburkardt/cpp_src/asa047/asa047.html
-[^3]:https://github.com/boostorg/boost
-[^4]:https://github.com/swig/swig
+[^1]:https://ui.adsabs.harvard.edu/abs/2021PhRvD.103l3004B/abstract (table IX)
+[^2]:https://github.com/dilawar/libsoda-cxx
+[^3]:https://people.sc.fsu.edu/~jburkardt/cpp_src/asa047/asa047.html
+[^4]:https://github.com/boostorg/boost
+[^5]:https://github.com/swig/swig
