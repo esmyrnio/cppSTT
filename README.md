@@ -29,6 +29,7 @@ For example,
    - *central density ~ 0.5-4.0 (10^15 gr/cm^3)*
    - *coupling ~ [-5.0,-4.5] (DEF), [5,10^3] (R^2)*
 
+GR solutions may also be obtained simply by choosing "DEF" as theory and setting the coupling to zero.
 
 [^1]:https://github.com/dilawar/libsoda-cxx
 [^2]:https://people.sc.fsu.edu/~jburkardt/cpp_src/asa047/asa047.html
