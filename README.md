@@ -27,7 +27,7 @@ For example,
 ```
 *typical input parameter space:*
    - *central density ~ 0.5-4.0 (10^15 gr/cm^3)*
-   - *coupling ~ [-5.0,-4.5] (DEF), [5,10^3] (R^2)*
+   - *coupling ~ (-5.0,-4.5) (DEF), (5,10^3) (R^2)*
 
 GR solutions may also be obtained simply by choosing "DEF" as theory and setting the coupling to zero.
 
