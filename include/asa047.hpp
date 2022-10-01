@@ -5,7 +5,13 @@
 #include <cmath>
 #include "types.hpp"
 
-
+/*
+################### MODIFICATIONS ###################
+void nelmin(...) modified to fit the STT class
+-- templated
+-- load STT and minima function type from types.hpp
+################### MODIFICATIONS ###################
+*/
 
 template <typename theoryType>
 void nelmin(STT<theoryType>* model, typename TYPES<theoryType>::COST_FUNCTION fn , int n, double start[], double xmin[], 

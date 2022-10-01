@@ -1,6 +1,5 @@
 #ifndef THEORY_HPP
 #define THEORY_HPP
-
 #include <vector>
 #include <string>
 #include "eos.hpp"
@@ -9,73 +8,73 @@
 
 using Vector = std::vector<double>;
 using Array = double*;
+// This is where the gravitational theories are defined
 
+// DEF theory
 struct DEF
 {
     DEF(std::string,double foo,double);
     ~DEF();
+   
+    //---- theory's functions ----//
     double A_of_phi(double, double);
     double a_of_phi(double,double);
     double V_of_phi(double,double);
     double dV_of_phi(double, double);
     double dnudr_inf(double,double,double,double);
-    void system(double,Array,Array,double);
-    void computeMass(double&,double,double,double, double);
-    void computeRadius(double&, double,double,double);
-    void computeScalarCharge(double&,double);
-    double scalar_start(double eps_c);
-    double r_max,r_max_surface,RDIV;
-    double atol,rtol,reqmin;
-    double A, alpha,eps;
-    double startingPointX;
-    double startingPointY;
-    double stepX;
-    double stepY;
-    EOS eos;
-};
+    //---- ################## ----//
 
+    void system(double,Array,Array,double); // ODE system of theory
+    void computeMass(double&,double,double,double, double); // computes gravitational mass
+    void computeRadius(double&, double,double,double); // computes radius
+    void computeScalarCharge(double&,double); // computes scalar charge
+    double scalar_start(double eps_c); // computes starting point for scalar to use in the Nelder-Mead optimization routine
+    double r_max,r_max_surface,RDIV; // maximum distance, maximum surface and number of grid points 
+    double atol,rtol,reqmin; // LSODA and Nelder-Mead accuracy
+    double A, alpha,eps; // theory's function values and energy density
+    double metricStartingPoint;
+    double scalarStartingPoint;
+    double metricStep; // metric's step in Nelder-Mead routine
+    double scalarStep; // scalar's step in Nelder-Mead routine
+    EOS eos; // EoS instance
+};
+// R2 theory
 struct R2
 {
     R2(std::string,double,double foo);
     ~R2();
+    double set_rmax(double);
+    //---- theory's functions ----//
     double A_of_phi(double, double);
     double a_of_phi(double,double);
     double V_of_phi(double,double);
     double dV_of_phi(double, double);
     double dnudr_inf(double,double,double,double);
-    void system(double,Array,Array,double);
-    void computeMass(double&,double,double,double, double);
-    void computeRadius(double&, double,double,double);
-    void computeScalarCharge(double&,double);
-    double set_rmax(double);
-    double r_max,r_max_surface,RDIV;
-    double atol,rtol,reqmin;
-    double A, V,dV,alpha,eps;
-    double startingPointX;
-    double startingPointY;
-    double stepX;
-    double stepY;
-    EOS eos;
+    //---- ################## ----//
+    void system(double,Array,Array,double); // ODE system of theory
+    void computeMass(double&,double,double,double, double); // computes gravitational mass
+    void computeRadius(double&, double,double,double); // computes radius
+    void computeScalarCharge(double&,double); // computes scalar charge
+    double scalar_start(double eps_c); // computes starting point for scalar to use in the Nelder-Mead optimization routine
+    double r_max,r_max_surface,RDIV; // maximum distance, maximum surface and number of grid points 
+    double atol,rtol,reqmin; // LSODA and Nelder-Mead accuracy
+    double A, V, dV, alpha,eps; // theory's function values and energy density
+    double metricStartingPoint;
+    double scalarStartingPoint;
+    double metricStep; // metric's step in Nelder-Mead routine
+    double scalarStep; // scalar's step in Nelder-Mead routine
+    EOS eos; // EoS instance
 };
 #endif
 
 DEF::DEF(std::string eos_name, double foo, double eps_c):atol(1e-15),rtol(1e-06),reqmin(1e-15),
-r_max(1e5),r_max_surface(15.0),RDIV(5001),startingPointX(-0.8),startingPointY(scalar_start(eps_c)),
-stepX(0.2),stepY(-0.01), eos(eos_name){};
-
+r_max(1e5),r_max_surface(15.0),RDIV(5001),metricStartingPoint(-0.8),scalarStartingPoint(scalar_start(eps_c)),
+metricStep(0.2),scalarStep(-0.01), eos(eos_name){};
 DEF::~DEF(){};
-
 double DEF::scalar_start(double eps_c)
 {
-    if(eps_c>2.1)
-    {
-        return 0.0;
-    }
-    else
-    {
-        return -0.1;
-    }
-    
+    double start = eps_c>2.1 ? 0.0 : -0.1;
+    return start;
 }
 double DEF::a_of_phi(double phi, double beta)
 {
@@ -104,7 +103,6 @@ void DEF::system(double r,Array y,Array yprime,double beta)
     yprime[2] =  4*M_PI*pow(A,4)*r*(alpha*(eps-3.0*y[3]) + r*(eps-y[3])*y[2] )/(r-2.0*y[0]) - 2*y[2]*(1 - y[0]/r)/(r - 2.0*y[0]);
     yprime[3] = -(eps + y[3])*((y[0] + 4.0*M_PI*pow(A,4)*pow(r,3.0)*y[3])/(r*(r-2.0*y[0])) + 0.5*r*pow(y[2],2) + alpha*y[2]);
     yprime[4] = y[2]; 
-
 }
 
 double DEF::dnudr_inf(double y0,double y2,double phi, double coupling)
@@ -127,11 +125,9 @@ void DEF::computeScalarCharge(double& scalarCharge, double dphi_last)
 }
 
 R2::R2(std::string eos_name, double alpha,double foo):atol(1e-20),rtol(1e-06),reqmin(1e-15),
-r_max(set_rmax(alpha)),r_max_surface(9.0),RDIV(5001),startingPointX(-1.0),startingPointY(0.1),
-stepX(1.0),stepY(0.1), eos(eos_name){};
-
+r_max(set_rmax(alpha)),r_max_surface(9.0),RDIV(5001),metricStartingPoint(-1.0),scalarStartingPoint(0.1),
+metricStep(1.0),scalarStep(0.1), eos(eos_name){};
 R2::~R2(){};
-
 double R2::set_rmax(double alpha)
 {
             if(alpha>=1.0 && alpha<20.0)

@@ -35,6 +35,22 @@ using namespace std;
  */
 /* ----------------------------------------------------------------------------*/
 
+
+/*
+################### !!! MODIFICATIONS !!! ###################
+These functions where modifed to fit the STT class model. 
+    void prja(...);
+    void lsoda(...);
+    void correction(...);
+    void stoda(...);
+    void lsoda_update(...);
+
+    -- templated
+    -- load STT and ODE system type from types.hpp
+################### !!! MODIFICATIONS !!! ###################
+*/ 
+
+//forward declaration
 template <typename theoryType>
 class STT;
 

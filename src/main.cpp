@@ -3,11 +3,11 @@
 #include <stdlib.h>
 #include <string.h>
 
+// function to be exposed to python using SWIG. Computes model's mass, radius and scalar charge.
 void get_MR(std::string theory,std::string eos_name, double central_density,double coupling,
             double* mass, double* radius, double* scalarCharge,
             double* minimizationError, double* centralScalar)
 {
-
     if(theory=="DEF")
     {
         STT<DEF> model(eos_name,central_density,coupling);
@@ -19,7 +19,6 @@ void get_MR(std::string theory,std::string eos_name, double central_density,doub
         *centralScalar = model.centralScalar;
 
     }
-
     else if(theory=="R2")
     {
         STT<R2> model(eos_name,central_density,coupling);
@@ -30,14 +29,13 @@ void get_MR(std::string theory,std::string eos_name, double central_density,doub
         *minimizationError = model.minimizationError;
         *centralScalar = model.centralScalar;
     }
-
 }
 
 int main(int argc, char *argv[]){
     char eos_name[50];
     char theory[50];
     double central_density, coupling;
-    EXECUTION::call_type = "main_call";
+    EXECUTION::CALL_TYPE = "main_call";
     for(int i=1;i<argc;i++) 
       if(argv[i][0]=='-'){
         switch(argv[i][1]){
@@ -55,7 +53,6 @@ int main(int argc, char *argv[]){
             break;
           }          
       }
-
     if(!strcmp(theory,"DEF"))
     {
         STT<DEF> model(eos_name,central_density,coupling);
@@ -72,6 +69,5 @@ int main(int argc, char *argv[]){
     {
         std::cout<<"theory not available."<<std::endl;
     }
-
     return 0;
 }
