@@ -38,8 +38,8 @@ double EOS::e_at_p(double pp)
 {
   // pchip interpolation of tabulated EoS points
   auto spline = pchip<decltype(log_p_tab)>(log_p_tab,log_e_tab);
-  double pTab = pp<p_surface? 0 : pow(10.0,spline(log10(pp)));
-  return pTab;
+  double eTab = pp<p_surface? 0 : pow(10.0,spline(log10(pp)));
+  return eTab;
 }
 double EOS::p_at_e(double ee)
 {
