@@ -8,9 +8,9 @@ The C++ code is wrapped using [SWIG](https://github.com/swig/swig)[^5], into a p
 
 ## Usage
 
-Compile, using the provided makefile. Type "make" in the main directory, where the makefile is also located, to create the executionable file.
+Compile, using the provided makefile.
 
-STT.exe takes 5 inputs in-turn. The parameters are specified using the following flags:
+STT.exe takes 5 inputs in total. The parameters are specified using the following flags:
 
 1. **-m** *theory* (DEF or R2)
 2. **-f** *eos name* (EoS file name).
