@@ -130,8 +130,8 @@ template<class theoryType>
 void STT<theoryType>::findMin(){
     int number_of_variables = 2;
     double xmin[2],ynewlo;
-    double start[2] = {model.startingPointX,model.startingPointY};
-    double steps[2] = {model.stepX,model.stepY};
+    double start[2] = {model.metricStartingPoint,model.scalarStartingPoint};
+    double steps[2] = {model.metricStep,model.scalarStep};
     int icount,konvge,kcount,numres,ifault;
     konvge = 10;
     kcount = 500;
