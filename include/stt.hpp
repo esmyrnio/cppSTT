@@ -24,8 +24,8 @@ class STT{
 
     private:
         Vector linspace(double, double, int) const; //linear space fector
-        Vector gradient(Vector, double) const; //find gradient of vector
-        double functionToMinimize(Array); //returns boundary conditions at infinity 
+        Vector gradient(Vector const&, double) const; //find gradient of vector
+        double functionToMinimize(const Array); //returns boundary conditions at infinity 
         void findMin(); //this is the double shooting method routine for boundary conditions at infinity 
         void solve(); //solves the ODE system
 
@@ -84,7 +84,7 @@ Vector STT<theoryType>::linspace(double start, double end, int num) const
 
 // returns the gradient of a vector
 template<class theoryType>
-Vector STT<theoryType>::gradient(Vector input, double h) const
+Vector STT<theoryType>::gradient(Vector const& input, double h) const
 {
     if (input.size() <= 1) return input;
     Vector res;
@@ -107,7 +107,7 @@ Vector STT<theoryType>::gradient(Vector input, double h) const
 
 // returns the metric and scalar value at infinity to be optimized to zero
 template<class theoryType>
-double STT<theoryType>::functionToMinimize(Array trial_vals)
+double STT<theoryType>::functionToMinimize(const Array trial_vals)
 {  
   centralMetric = trial_vals[0];
   centralScalar = trial_vals[1];

@@ -19,11 +19,11 @@ struct DEF
     ~DEF();
    
     //---- theory's functions ----//
-    double A_of_phi(double, double);
-    double a_of_phi(double,double);
-    double V_of_phi(double,double);
-    double dV_of_phi(double, double);
-    double dnudr_inf(double,double,double,double);
+    inline double A_of_phi(double, double);
+    inline double a_of_phi(double,double);
+    inline double V_of_phi(double,double);
+    inline double dV_of_phi(double, double);
+    inline double dnudr_inf(double,double,double,double);
     //---- ################## ----//
 
     void system(double,Array,Array,double); // ODE system of theory
@@ -49,11 +49,11 @@ struct R2
     ~R2();
 
     //---- theory's functions ----//
-    double A_of_phi(double, double);
-    double a_of_phi(double,double);
-    double V_of_phi(double,double);
-    double dV_of_phi(double, double);
-    double dnudr_inf(double,double,double,double);
+    inline double A_of_phi(double, double);
+    inline double a_of_phi(double,double);
+    inline double V_of_phi(double,double);
+    inline double dV_of_phi(double, double);
+    inline double dnudr_inf(double,double,double,double);
     //---- ################## ----//
     
     double set_rmax(double);
@@ -87,22 +87,22 @@ double DEF::scalar_start(double eps_c)
     return start;
 }
 
-double DEF::a_of_phi(double phi, double beta)
+inline double DEF::a_of_phi(double phi, double beta)
 {
     return beta*phi;
 }
 
-double DEF::V_of_phi(double phi, double beta)
+inline double DEF::V_of_phi(double phi, double beta)
 {
     return 0;
 }
 
-double DEF::dV_of_phi(double phi, double beta)
+inline double DEF::dV_of_phi(double phi, double beta)
 {
     return 0;
 }
 
-double DEF::A_of_phi(double phi, double beta)
+inline double DEF::A_of_phi(double phi, double beta)
 {
     return exp(0.5*beta*pow(phi,2));    
 }
@@ -120,7 +120,7 @@ void DEF::system(double r,Array y,Array yprime,double beta)
     yprime[4] = y[2]; 
 }
 
-double DEF::dnudr_inf(double y0,double y2,double phi, double coupling)
+inline double DEF::dnudr_inf(double y0,double y2,double phi, double coupling)
 {
     return 2.0*y0/(r_max*(r_max-2.0*y0))+r_max*pow(y2,2);
 }
@@ -164,22 +164,22 @@ double R2::set_rmax(double alpha)
             }
 }   
 
-double R2::a_of_phi(double phi, double alpha)
+inline double R2::a_of_phi(double phi, double alpha)
 {
     return -1/pow(3,0.5);
 }
 
-double R2::A_of_phi(double phi, double alpha)
+inline double R2::A_of_phi(double phi, double alpha)
 {
     return exp(a_of_phi(phi,alpha)*phi);
 }
 
-double R2::V_of_phi(double phi, double alpha)
+inline double R2::V_of_phi(double phi, double alpha)
 {
     return (1/(4*alpha))*pow(1 - exp(2*a_of_phi(phi,alpha)*phi),2);
 }
 
-double R2::dV_of_phi(double phi, double alpha)
+inline double R2::dV_of_phi(double phi, double alpha)
 {
     return (-a_of_phi(phi,alpha)/alpha)*(exp(a_of_phi(phi,alpha)*2*phi) - exp(a_of_phi(phi,alpha)*4*phi));
 }
@@ -200,7 +200,7 @@ void R2::system(double r,Array y,Array yprime,double alpha)
     yprime[4] = y[2];
 }
 
-double R2::dnudr_inf(double y0,double y2,double phi, double coupling)
+inline double R2::dnudr_inf(double y0,double y2,double phi, double coupling)
 {
     double V = V_of_phi(phi,coupling);
     return 2.0*(y0 - 0.25*V*pow(r_max,3.0))/(r_max*(r_max-2.0*y0))+r_max*pow(y2,2);
