@@ -11,14 +11,17 @@ using boost::math::interpolators::pchip; //Piecewise Cubic Hermite interpolation
 EOS::EOS(std::string eos_file)
 {
   std::string eos;
+
   //set EoS path according to call type
   eos = EXECUTION::CALL_TYPE=="main_call"? "EoS/" : "../EoS/";
   eos+=eos_file;
+  
   // check to see if file is valid
   if((f_eos=fopen(eos.c_str(),"r")) == NULL ) {    
       std::cout<<"cannot open file "<<eos_file<<std::endl; 
       exit(0);
   }
+
   //load EoS file parameters in log vectors
   fscanf(f_eos,"%d\n",&n_tab);
   for(i=1;i<=n_tab;i++)
@@ -33,15 +36,18 @@ EOS::EOS(std::string eos_file)
   e_surface=pow(10,log_e_tab[0]);
   fclose(f_eos);
 }
+
 EOS::~EOS(){};
-double EOS::e_at_p(double pp)
+
+double EOS::e_at_p(double pp) const
 {
   // pchip interpolation of tabulated EoS points
   auto spline = pchip<decltype(log_p_tab)>(log_p_tab,log_e_tab);
   double eTab = pp<p_surface? 0 : pow(10.0,spline(log10(pp)));
   return eTab;
 }
-double EOS::p_at_e(double ee)
+
+double EOS::p_at_e(double ee) const
 {
   // pchip interpolation of tabulated EoS points
   auto spline = pchip<decltype(log_e_tab)>(log_e_tab,log_p_tab);
