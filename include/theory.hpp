@@ -19,11 +19,11 @@ struct DEF
     ~DEF();
    
     //---- theory's functions ----//
-    inline double A_of_phi(double, double);
-    inline double a_of_phi(double,double);
-    inline double V_of_phi(double,double);
-    inline double dV_of_phi(double, double);
-    inline double dnudr_inf(double,double,double,double);
+    double A_of_phi(double, double);
+    double a_of_phi(double,double);
+    double V_of_phi(double,double);
+    double dV_of_phi(double, double);
+    double dnudr_inf(double,double,double,double);
     //---- ################## ----//
 
     void system(double,Array,Array,double); // ODE system of theory
@@ -49,11 +49,11 @@ struct R2
     ~R2();
 
     //---- theory's functions ----//
-    inline double A_of_phi(double, double);
-    inline double a_of_phi(double,double);
-    inline double V_of_phi(double,double);
-    inline double dV_of_phi(double, double);
-    inline double dnudr_inf(double,double,double,double);
+    double A_of_phi(double, double);
+    double a_of_phi(double,double);
+    double V_of_phi(double,double);
+    double dV_of_phi(double, double);
+    double dnudr_inf(double,double,double,double);
     //---- ################## ----//
     
     double set_rmax(double);
